@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{%extends 'mobile/base.html'%}
+{%block body_block%}
+<div class="container">
+    <div class="row">
+        {% for cart in cart_items %}
+        <div class="col-6">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{cart.product.image.url}}" alt="..." height="224px" width="200px">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{cart.product}}</h5>
+                            <p class="card-text">{{cart.product.specs}}</p>
+                            <p class="card-text">₹{{cart.product.price}}</p>
+                            <p class="card-text">Item Qty: {{cart.quantity}}</p>
+                            <a href="{%url 'order' cart.id%}" class="btn btn-outline-primary">Buy Now</a>
+                            <a href="{%url 'remove' cart.id%}" class="btn btn-outline-danger">Remove</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        {%endfor%}
+    </div>
+</div>
+{%endblock%}

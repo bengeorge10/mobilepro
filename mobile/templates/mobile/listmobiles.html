@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% extends 'mobile/base.html'%}
+
+{% block body_block%}
+
+<!--user-->
+{% if not user.is_superuser %}
+<div class="row">
+    {% for mobile in mobiles %}
+
+    <div class="col-4">
+
+        <div class="card" style="width: 18rem;">
+            <img src="{{mobile.image.url}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{mobile.product_name}}</h5>
+                <p class="card-text">{{mobile.price}}</p>
+                <a href="{% url 'detail' mobile.id %}" class="btn btn-primary">View</a>
+            </div>
+        </div>
+
+
+    </div>
+    {% endfor %}
+
+</div>
+{% endif %}
+
+<!--admin-->
+<!--{% if user.is_superuser %}-->
+
+<!--<div>-->
+<!--    <table class="table">-->
+<!--        <thead class="thead-dark">-->
+<!--        <tr>-->
+<!--            <th>PRODUCT NAME</th>-->
+<!--            <th>PRICE</th>-->
+<!--            <th>SPECIFICATIONS</th>-->
+<!--            <th></th>-->
+<!--            <th></th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        {% for mobile in mobiles %}-->
+<!--        <tr>-->
+<!--            <td>{{mobile.product_name}}</td>-->
+<!--            <td>{{mobile.price}}</td>-->
+<!--            <td>{{mobile.specs}}</td>-->
+<!--            <td><a href="{% url 'detail' mobile.id %}" class="btn btn-outline-primary">View</a></td>-->
+<!--            <td><a href="{% url 'update' mobile.id %}" class="btn btn-outline-success">Update</a></td>-->
+<!--            <td><a href="{% url 'delete' mobile.id %}" class="btn btn-outline-danger">Delete</a></td>-->
+<!--        </tr>-->
+<!--        {% endfor %}-->
+<!--    </table>-->
+<!--</div>-->
+<!--{%endif%}-->
+{% endblock %}

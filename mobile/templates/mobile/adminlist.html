@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% extends 'mobile/adminbase.html'%}
+{%block body_block%}
+<div>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th>PRODUCT NAME</th>
+            <th>PRICE</th>
+            <th>SPECIFICATIONS</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        {% for mobile in mobiles %}
+        <tr>
+            <td>{{mobile.product_name}}</td>
+            <td>{{mobile.price}}</td>
+            <td>{{mobile.specs}}</td>
+            <td><a href="{% url 'adminview' mobile.id %}" class="btn btn-outline-primary">View</a></td>
+            <td><a href="{% url 'update' mobile.id %}" class="btn btn-outline-success">Update</a></td>
+            <td><a href="{% url 'delete' mobile.id %}" class="btn btn-outline-danger">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
